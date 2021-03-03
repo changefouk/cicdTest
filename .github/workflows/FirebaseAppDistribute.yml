@@ -16,6 +16,11 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Build
+          run: |
+            npm install
+            npm run build
+
       - name: Firebase App Distribute
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
