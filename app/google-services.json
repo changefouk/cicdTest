@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "310800894156",
+    "project_id": "example-ci-cd-773eb",
+    "storage_bucket": "example-ci-cd-773eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310800894156:android:0d890f4012365a6f371a69",
+        "android_client_info": {
+          "package_name": "com.appsynthassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310800894156-avkbqabbccna8riqc7qh5ti50ea2vbjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARzX_wqXDKwSjfqJZUp4azUIoU_8BFXI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310800894156-avkbqabbccna8riqc7qh5ti50ea2vbjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.appsynthassignment.util.StatusResult" />
+
+        <variable
+            name="adapter"
+            type="com.appsynthassignment.presentation.profile.adapter.ProfileInformationAdapter" />
+
+        <variable
+            name="vm"
+            type="com.appsynthassignment.presentation.profile.ProfileInformationViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_profileInformation_mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_profileInformation_profileContent"
+            goneUnless="@{vm.statusResult == StatusResult.SUCCESS}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView_layoutProfile"
+                loadImageUrl="@{vm.profileInformation.profile.avatar}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="@id/barrier_layoutProfile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:src="@mipmap/ic_launcher_round" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_profileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{vm.profileInformation.profile.fullProfileName}"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/imageView_layoutProfile"
+                app:layout_constraintTop_toBottomOf="@id/imageView_layoutProfile"
+                tool:text="John Doe" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_layoutProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="right"
+                app:constraint_referenced_ids="imageView_layoutProfile"
+                tool:layout_editor_absoluteX="16dp"
+                tool:layout_editor_absoluteY="16dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_likeCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.profileInformation.profile.likes}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textView_layoutProfile_followerCount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@+id/imageView_layoutProfile"
+                app:layout_constraintStart_toStartOf="@id/barrier_layoutProfile"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="100K" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_likeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/like_label"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@id/textView_layoutProfile_likeCount"
+                app:layout_constraintStart_toStartOf="@id/textView_layoutProfile_likeCount"
+                app:layout_constraintTop_toBottomOf="@id/textView_layoutProfile_likeCount"
+                tool:ignore="SmallSp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_followerCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.profileInformation.profile.follower}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textView_layoutProfile_followingCount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView_layoutProfile_likeCount"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="50K" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_followerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/follower_label"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@id/textView_layoutProfile_followerCount"
+                app:layout_constraintStart_toStartOf="@id/textView_layoutProfile_followerCount"
+                app:layout_constraintTop_toBottomOf="@id/textView_layoutProfile_followerCount"
+                tool:ignore="SmallSp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_followingCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.profileInformation.profile.following}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView_layoutProfile_followerCount"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="20K" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView_layoutProfile_followingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/following_label"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@id/textView_layoutProfile_followingCount"
+                app:layout_constraintStart_toStartOf="@id/textView_layoutProfile_followingCount"
+                app:layout_constraintTop_toBottomOf="@id/textView_layoutProfile_followingCount"
+                tool:ignore="SmallSp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_profileInformation"
+            goneUnless="@{vm.statusResult == StatusResult.SUCCESS}"
+            setAdapter="@{adapter}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout_profileInformation_profileContent"
+            app:layout_constraintVertical_bias="0.0"
+            tool:itemCount="4"
+            tool:listitem="@layout/item_profileinformation" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_profileInformation"
+            goneUnless="@{vm.statusResult == StatusResult.LOADING}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/layout_profileInformation_errorView"
+            goneUnless="@{vm.statusResult == StatusResult.ERROR}"
+            layout="@layout/layout_error"
+            app:errorText="@{vm.errorMessage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onButtonClick="@{() ->vm.fetchData()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
