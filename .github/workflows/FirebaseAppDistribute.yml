@@ -16,12 +16,13 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Build
-          run: |
-            npm install
-            npm run build
+      - name: Build the app
+          run: ./gradlew build
+
+      - name: Test
+          run: ./gradlew test
 
       - name: Firebase App Distribute
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: ./gradlew assembleDebug appDistributionUploadDebug
+        run: ./gradlew assembleDebug appDistributionUploadDebugnp
