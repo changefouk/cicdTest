@@ -16,8 +16,8 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Build the app
-          run: ./gradlew assembleDebug build
+      - name: Build with Gradle
+          run: ./gradlew build
       - name: Run Unit Test
           run: ./gradlew assembleDebug test
       - name: Firebase App Distribute
